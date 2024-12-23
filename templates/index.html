@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__bounceIn">Rock Paper Scissors</h1>
+        
+        <div class="score-board">
+            <div class="score-box player-score">
+                <span class="score-label">You</span>
+                <span id="playerScore">0</span>
+            </div>
+            <div class="score-box computer-score">
+                <span class="score-label">Computer</span>
+                <span id="computerScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="restartBtn" class="restart-btn" title="Reset game and scores">
+                <i class="fas fa-redo"></i> Restart Game
+            </button>
+            <button id="soundToggle" class="sound-btn" title="Toggle sound effects">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </div>
+
+        <div class="player-section">
+            <input type="text" id="playerName" placeholder="Enter your name" maxlength="20">
+            <div id="displayName" class="rainbow-text"></div>
+        </div>
+
+        <div class="game-section">
+            <div class="choices">
+                <button class="choice-btn" data-choice="rock" title="Choose Rock">
+                    <i class="fas fa-hand-rock fa-3x"></i>
+                    <span>Rock</span>
+                </button>
+                <button class="choice-btn" data-choice="paper" title="Choose Paper">
+                    <i class="fas fa-hand-paper fa-3x"></i>
+                    <span>Paper</span>
+                </button>
+                <button class="choice-btn" data-choice="scissors" title="Choose Scissors">
+                    <i class="fas fa-hand-scissors fa-3x"></i>
+                    <span>Scissors</span>
+                </button>
+            </div>
+
+            <div class="game-result">
+                <div class="result-display">
+                    <div class="player-choice">
+                        <h3>Your Choice</h3>
+                        <div id="playerChoice" class="choice-display"></div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="computer-choice">
+                        <h3>Computer's Choice</h3>
+                        <div id="computerChoice" class="choice-display"></div>
+                    </div>
+                </div>
+                <div id="result" class="result-text"></div>
+                <div id="streak" class="streak-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="clickSound" preload="auto">
+        <source src="{{ url_for('static', filename='sounds/click.mp3') }}" type="audio/mpeg">
+    </audio>
+    <audio id="winSound" preload="auto">
+        <source src="{{ url_for('static', filename='sounds/win.mp3') }}" type="audio/mpeg">
+    </audio>
+    <audio id="loseSound" preload="auto">
+        <source src="{{ url_for('static', filename='sounds/lose.mp3') }}" type="audio/mpeg">
+    </audio>
+    <audio id="tieSound" preload="auto">
+        <source src="{{ url_for('static', filename='sounds/tie.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
